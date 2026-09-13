@@ -39,13 +39,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests (verbose, short traceback)
+      # PYTHONIOENCODING=utf-8 + PYTHONUTF8=1 强制 UTF-8 输出，
+      # 避免 Windows runner 默认 cp1252 codec 在 print 中文时崩 (e.g. "[run_real_live --dry] 开始 dry-run…")
+      - name: Run tests
+        env:
+          PYTHONIOENCODING: utf-8
+          PYTHONUTF8: 1
         shell: bash
-        run: |
-          python -m pytest tests/ -v --tb=short --color=yes
-
-      - name: Run tests (Windows)
-        if: matrix.os == 'windows-latest'
-        shell: pwsh
         run: |
           python -m pytest tests/ -v --tb=short --color=yes
