@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+
+# 虚拟环境
+venv/
+.venv/
+env/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 输出（运行时生成，gitignore）
+output/
+logs/
+xgda_result_*.csv
+
+# 数据缓存
+data/cache/
+*.parquet
+
+# 测试
+.pytest_cache/
+.coverage
+htmlcov/
+
+# TDX 加密二进制（避免误传到 git，全部本地化处理）
+config/tdx_l2/*.dat
+config/tdx_l2/*.dai
+config/tdx_l2/*.daq
+config/tdx_l2/*.rar
