@@ -82,6 +82,9 @@ def run_xgda_live(args, log_file: Path) -> int:
     py = PROJECT_ROOT / ".venv" / "Scripts" / "python.exe"
     if not py.exists():
         py = PROJECT_ROOT / ".venv" / "bin" / "python"
+    if not py.exists():
+        # CI / 容器 / 无 venv 环境: 用当前解释器
+        py = Path(sys.executable)
 
     cmd = [str(py), str(PROJECT_ROOT / "scripts" / "run_real_live.py")]
     if args.dry:
